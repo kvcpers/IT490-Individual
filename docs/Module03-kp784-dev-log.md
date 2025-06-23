@@ -1,6 +1,7 @@
 # Dev Log: 3
-## Date / Module: [Current Date] / Module 3
-## Name: Kacper P
+## Date / Module: June 23, 2025
+## Module: 03
+## Name: Kacper Pagacz
 
 ### GitHub Issue Links Assigned
 - [ ] Central Logging System Setup
@@ -11,11 +12,10 @@
     - Set up firewall rules with UFW
     - Create user accounts for team members
     - Configure hostname for node identification
-  - Started Date: [Current Date]
-  - Target Completion Date: [Current Date + 1 week]
-  - Finished Date: N/A
-  - Summary of individual contribution for this entry: 
-    Created a comprehensive setup script that automates the configuration of a central logging system. The script includes hostname configuration, user creation, package installation, firewall setup, Tailscale installation, and rsyslog client configuration for forwarding logs to a central server at 100.93.223.65:514.
+  - Started Date: June 20rd, 2025
+  - Target Completion Date: June 23rd, 2025
+  - Finished Date: June 23rd, 2025
+  - Summary of individual contribution for this entry: Everything is working as expected. Everyone did their part and we were able to complete the project however it was more about communication and finding a time and place to meet with everyone.
 
 ### Noteworthy Learnings and resource links
 - Centralized logging system architecture and implementation
@@ -30,23 +30,13 @@
   - https://www.gnu.org/software/bash/manual/bash.html
 
 ### Problems/Difficulties Encountered
-- Understanding the proper rsyslog configuration syntax for log forwarding
-- Determining the correct firewall rules for secure communication
-- Setting up proper user permissions and access controls
-- Configuring Tailscale for automatic startup and authentication
-- Ensuring proper error handling in the setup script
-- Managing dependencies between different system components
+- Maybe setting it up in the beginning would have been better but I figured it out in the end
 
 ### Positive Shoutout to Team Member(s)
-- N/A (Individual assignment)
+- Everyone did their part and we were able to complete the project.
 
 ### What can be improved individually?
-- Add more comprehensive error handling and validation in the setup script
-- Implement logging and monitoring for the setup process itself
-- Create backup and rollback procedures for configuration changes
-- Add configuration validation and testing procedures
-- Improve documentation with more detailed explanations
-- Add support for different Linux distributions beyond Ubuntu
+- I think I could have been more involved in the project and I could have done more research on the project.
 
 ### What can be improved as a team?
-- N/A (Individual assignment) 
+- Communication is key and we should have met more often to discuss the project and the progress we were making. 
