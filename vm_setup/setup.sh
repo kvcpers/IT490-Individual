@@ -2,44 +2,40 @@
 
 set -e
 
-echo "Updating system..."
-sudo apt-get update
-sudo apt-get upgrade -y
+echo "🔧 Starting setup..."
 
-echo "Installing required packages..."
-sudo apt-get install -y \
-    php \
-    php-cli \
-    php-common \
-    php-curl \
-    php-mbstring \
-    php-xml \
-    rabbitmq-server \
-    git \
-    composer
+# 1. Set hostname
+echo "📛 Setting hostname..."
+sudo hostnamectl set-hostname kp123-node-A
 
-echo "Starting RabbitMQ service..."
-sudo systemctl start rabbitmq-server
-sudo systemctl enable rabbitmq-server
+# 2. Add users (one line per group member UCID)
+echo "👥 Adding users..."
+sudo adduser --disabled-password --gecos "" kp123
+sudo adduser --disabled-password --gecos "" kp784
 
-echo "Creating user..."
-sudo useradd -m -s /bin/bash kp784
-echo "kp784:your_password" | sudo chpasswd
-sudo usermod -aG sudo kp784
+# 3. Install packages
+echo "📦 Installing required packages..."
+sudo apt update
+sudo apt install -y rsyslog ufw curl
 
-echo "Setting up example code..."
-cd /home/kp784
-git clone https://github.com/MattToegel/IT490.git
-cd IT490
+# 4. Configure firewall
+echo "🔥 Configuring UFW..."
+sudo ufw allow ssh
+sudo ufw --force enable
 
-echo "Installing PHP dependencies..."
-composer install
+# 5. Install Tailscale
+echo "🌐 Installing Tailscale..."
+curl -fsSL https://tailscale.com/install.sh | sh
+sudo tailscale up
 
-echo "Setting permissions..."
-sudo chown -R kp784:kp784 /home/kp784/IT490
+# 6. Configure rsyslog to forward logs to central rsyslog server (adjust IP)
+echo "📝 Configuring rsyslog client..."
+cat <<EOF | sudo tee /etc/rsyslog.d/90-central-logging.conf
+*.* @100.93.223.65:514
+EOF
 
-echo "Setup completed successfully!"
-echo "To test the setup:"
-echo "1. Open two terminal windows"
-echo "2. In the first terminal, run: php RabbitMQServerSample.php"
-echo "3. In the second terminal, run: php RabbitMQClientSample.php" 
+# Restart rsyslog to apply changes
+echo "🔁 Restarting rsyslog..."
+sudo systemctl restart rsyslog
+
+echo "✅ Setup complete!"
