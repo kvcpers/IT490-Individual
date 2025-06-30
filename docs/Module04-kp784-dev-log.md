@@ -19,8 +19,8 @@
     - Sessions that persist across page reloads and navigation
     - No direct VM-to-VM communication (must use MQ)
     - Passwords stored with bcrypt hashing
-  - Started Date: June 30th, 2025
-  - Target Completion Date: July 7th, 2025
+  - Started Date: June 24th, 2025
+  - Target Completion Date: June 29th, 2025
   - Finished Date: N/A
   - Summary of individual contribution for this entry: Working on implementing the client-side components including HTML forms, CSS styling, and JavaScript validation for the registration and login system. Ensuring all form validations are user-friendly and the design is responsive and modern.
 
