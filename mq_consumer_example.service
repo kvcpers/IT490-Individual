@@ -1,0 +1,13 @@
+[Unit]
+Description=Test MQ Consumer Service
+After=network.target
+
+[Service]
+ExecStart=/home/kvcpers/it490/mq_consumer_example.sh
+Restart=always
+RestartSec=3
+StandardOutput=append:/home/kvcpers/it490/mq_service_output.log
+StandardError=append:/home/kvcpers/it490/mq_service_error.log
+
+[Install]
+WantedBy=multi-user.target 
